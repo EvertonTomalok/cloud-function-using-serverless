@@ -1,0 +1,27 @@
+service: payment
+
+provider:
+  name: google
+  stage: dev
+  runtime: python37
+  region: us-east1
+  project: tomalok-dev
+  credentials: ~/.gcloud/keyfile.json
+  environment:
+    PAGAR_ME_TOKEN: '1234abcd'
+
+frameworkVersion: '2'
+plugins:
+  - serverless-google-cloudfunctions
+
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+
+functions:
+  create_payment:
+    handler: create_payment
+    events:
+      - http: path
