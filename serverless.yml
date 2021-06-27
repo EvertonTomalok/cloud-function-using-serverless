@@ -25,3 +25,7 @@ functions:
     handler: create_payment
     events:
       - http: path
+  get_transactions_not_confirmed:
+    handler: get_transactions_not_confirmed
+    events:
+      - http: path
